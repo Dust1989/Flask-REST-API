@@ -27,11 +27,11 @@ class Item(Resource):
 
         data = Item.parser.parse_args()
 
-        # if StoreModel.find_by_id(data["store_id"]) is None:
-        #     return (
-        #         {"message": f"The store with id {data['store_id']} is not exists."},
-        #         400,
-        #     )
+        if StoreModel.find_by_id(data["store_id"]) is None:
+            return (
+                {"message": f"The store with id {data['store_id']} is not exists."},
+                400,
+            )
 
         item = ItemModel(name, **data)
 
